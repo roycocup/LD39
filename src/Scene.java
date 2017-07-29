@@ -25,9 +25,10 @@ public class Scene {
 	
 	public void loadScene(){
 		try{
-			this.getClass().getMethod("level"+sceneNum, new Class[] {}).invoke(this, new Object[] {});
+			this.getClass().getMethod("level"+sceneNum).invoke(this, new Object[] {});
 		} catch(Exception e){
-			g.println(e);
+			g.println(e.toString());
+			g.println("No such level/scene");
 			System.exit(500);
 		}
 		
@@ -115,6 +116,7 @@ public class Scene {
 	public void level3(){
 		planets.clear();
 		planets.add(new Planet(this, g, new PVector(g.width/2, g.height/2), 30, 80));
+		planets.add(new Planet(this, g, new PVector(100, g.height/2-100), 30, 30));
 		exit.pos = new PVector(208, 35);
 		ship.reset(new PVector(600, 500));
 	}

@@ -21,6 +21,7 @@ public class Slinger extends PApplet {
 		f1 = createFont("./1900805.ttf", 32);
 		f2 = createFont("./F25_Bank_Printer.ttf", 24);
 		f3 = createFont("./F25_Bank_Printer_Bold.ttf", 24);
+		new Audio();
 	}
 	
 	public void draw(){

@@ -28,7 +28,7 @@ public class UI {
 		g.textFont(g.f2);
 		g.stroke(255,255,255,alpha);
 		g.fill(255);
-		String str = "Scene " + s.sceneNum + " Speed " + (s.ship.vel.mag() * 100);
+		String str = "Level " + s.sceneNum + " Speed " + (s.ship.vel.mag() * 100);
 		g.text(str, x1 + 20, y1 + 50);
 		
 		if(g.DEBUG) 
