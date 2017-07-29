@@ -17,7 +17,7 @@ public class Slinger extends PApplet {
 	}
 
 	public void setup(){
-		this.scene = new Scene(this, 3); // 0 = main menu, 1 = level 1
+		this.scene = new Scene(this, 4); // 0 = main menu, 1 = level 1
 		background = loadImage("./background.png");
 		f1 = createFont("./1900805.ttf", 32);
 		f2 = createFont("./F25_Bank_Printer.ttf", 24);

@@ -137,8 +137,18 @@ public class Scene {
 	
 	public void level4(){
 		levelSetup();
-		planets.add(new Planet(this, g, new PVector(g.width/2, g.height/2), 30, 80));
-		exit.pos = new PVector(208, 35);
-		ship.reset(new PVector(600, 500));
+		exit.pos = new PVector(g.width/2, 30);
+		ship.reset(new PVector(g.width/2, g.height-40));
+		
+		planets.add(new Planet(this, g, new PVector(g.width/2, 300), 20, 40));
+		planets.add(new Planet(this, g, new PVector(367,107), 10, 40));
+		planets.add(new Planet(this, g, new PVector(100, g.height/2), 10, 40));
+		planets.add(new Planet(this, g, new PVector(145, (g.height/2)+30), 10, 40));
+		planets.add(new Planet(this, g, new PVector(534, (g.height/2)+40), 10, 40));
+		planets.add(new Planet(this, g, new PVector(192, 144), 10, 40));
+		planets.add(new Planet(this, g, new PVector(713, 361), 10, 40));
+		planets.add(new Planet(this, g, new PVector(646, 76), 10, 40));
+		
+		
 	}
 }
