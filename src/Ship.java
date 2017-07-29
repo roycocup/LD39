@@ -112,7 +112,7 @@ public class Ship implements iObserver{
 	
 	public void inform(int keycode){
 		// if space
-		if (keycode == 32){
+		if (keycode == 32 && shot == false){
 			shot = true;
 			applyForce(vecToMouse().mult(4));
 		}

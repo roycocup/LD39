@@ -60,6 +60,8 @@ public class Scene {
 		ship.update();
 		
 		exit.update();
+		
+		checkBoundaries();
 	}
 	
 	public void draw(){
@@ -74,11 +76,21 @@ public class Scene {
 	}
 	
 	
+	protected void checkBoundaries(){
+		if (ship.pos.x < 0 || ship.pos.y < 0 ){
+			reset();
+		}
+	}
+	
+	public void reset(){
+		ship.reset();
+	}
+	
 	protected void level1(){
 		
-		planets.add(new Planet(this, g, new PVector(80, 80), 50, 50));
-		planets.add(new Planet(this, g, new PVector(g.width/2, g.height/2), 30, 30));
-		planets.add(new Planet(this, g, new PVector(g.width/2, g.height/2), 30, 30));
+		planets.add(new Planet(this, g, new PVector(80, 80), 80, 40));
+		planets.add(new Planet(this, g, new PVector(g.width/2, g.height/2), 30, 80));
+		
 		
 		ship = new Ship(g, new PVector(500,500) );
 		
