@@ -1,8 +1,11 @@
 import processing.core.PApplet;
+import processing.core.PVector;
 
 public class Slinger extends PApplet {
 
-	Scene scene; 
+	Scene scene;
+	
+	Boolean DEBUG = true; 
 	
 	public void settings(){
 		size(800, 600);
@@ -17,6 +20,7 @@ public class Slinger extends PApplet {
 		background(0);
 		updateAll();
 		drawAll();
+		debug();
 	}
 	
 	
@@ -30,13 +34,18 @@ public class Slinger extends PApplet {
 	
 	
 	public void keyPressed(){
-		//println(keyCode);
+//		println(keyCode);
 		scene.onKeyPressed(keyCode); 
 	}
-	
+
+	void debug(){
+		PVector mp = new PVector(mouseX, mouseY);
+		//println(mp);
+	} 
 	
 	public static void main(String[] args) {
 		PApplet.main("Slinger");
 	}
+	
 
 }

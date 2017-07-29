@@ -80,7 +80,7 @@ public class Scene {
 		planets.add(new Planet(g, new PVector(g.width/2, g.height/2), 30, 30));
 		planets.add(new Planet(g, new PVector(g.width/2, g.height/2), 30, 30));
 		
-		ship = new Ship(g, new PVector(50,50) );
+		ship = new Ship(g, new PVector(500,500) );
 		
 		exit = new Exit(g, new PVector(g.width, g.height));
 		registerObservers();
