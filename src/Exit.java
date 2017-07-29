@@ -18,6 +18,7 @@ public class Exit implements iObserver{
 	
 	public void draw(){
 		g.pushMatrix();
+		g.noStroke();
 		g.fill(255);
 		g.rect(this.pos.x - size, this.pos.y - size, size, size);
 		g.popMatrix();

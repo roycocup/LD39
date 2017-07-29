@@ -28,6 +28,7 @@ public class Ship implements iObserver{
 		pos = initialPos.copy();
 		acc = new PVector(0,0); 
 		vel = new PVector(0,0); 
+		shot = false;
 	}
 	
 	public void update(){
@@ -77,7 +78,9 @@ public class Ship implements iObserver{
 	
 	PVector vecToMouse(){
 		PVector mp = new PVector(g.mouseX, g.mouseY);
-		PVector force = pos.copy().sub(mp).normalize().mult(-1);
+		PVector dist = pos.copy().sub(mp);
+		PVector force = dist.copy().normalize().mult(-1);
+		force.mult(dist.copy().mag() * .005f);
 		return force;
 	}
 	

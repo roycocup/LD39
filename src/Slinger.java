@@ -37,6 +37,10 @@ public class Slinger extends PApplet {
 //		println(keyCode);
 		scene.onKeyPressed(keyCode); 
 	}
+	
+	public void mousePressed(){
+		scene.onKeyPressed(32);
+	}
 
 	void debug(){
 		PVector mp = new PVector(mouseX, mouseY);

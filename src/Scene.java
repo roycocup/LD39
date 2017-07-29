@@ -82,7 +82,7 @@ public class Scene {
 		
 		ship = new Ship(g, new PVector(500,500) );
 		
-		exit = new Exit(g, new PVector(g.width, g.height));
+		exit = new Exit(g, new PVector(50, 50));
 		registerObservers();
 	} 
 }
