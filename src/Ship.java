@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import processing.core.PVector;
 
 public class Ship implements iObserver{
@@ -12,6 +14,7 @@ public class Ship implements iObserver{
 	PVector initialPos = new PVector(0,0);
 	Mouse mouse;
 	Boolean shot = false;
+	ArrayList<PVector> hPos = new ArrayList<PVector>(); 
 	
 	PVector acc = new PVector(0,0); 
 	PVector vel = new PVector(0,0); 
@@ -22,6 +25,7 @@ public class Ship implements iObserver{
 		this.pos = pos;
 		this.initialPos = pos.copy();
 		mouse = new Mouse(g);
+		hPos.add(pos);
 	}
 	
 	public void reset(){
@@ -38,6 +42,13 @@ public class Ship implements iObserver{
 		// dampening
 		vel.mult(dampening);
 		mouse.update();
+		
+		PVector lastPos = hPos.get(hPos.size()-1);
+		if (lastPos.equals(pos)){
+			//g.println(pos);
+			hPos.add(pos);
+		}
+		
 	}
 	
 	public void draw(){
@@ -56,8 +67,6 @@ public class Ship implements iObserver{
 	}
 	
 	public void drawShip(){
-		g.stroke(255);
-		g.fill(255,0,0);
 		int size = 10; 
 		float x1 = (this.pos.x - size) ;
 		float y1 = (this.pos.y - size) ;
@@ -68,8 +77,25 @@ public class Ship implements iObserver{
 		
 		//float c = g.cos(pos.copy().angleBetween(vel, vecToMouse()));
 		//g.rotate(c);
+		
+		drawTrail();
+		g.stroke(255);
+		g.fill(255,0,0);
 		g.triangle(x1, y1, x2, y2, x3, y3);
 		
+	}
+	
+	void drawTrail(){
+		if (shot.equals(true)){
+			g.stroke(34, 113, 192);
+			for(int i = hPos.size()-1; i > 0; i--){
+				PVector cp = hPos.get(i);
+				PVector pp = hPos.get(i-1);
+				g.line(cp.x, cp.y, pp.x, pp.y);
+				//g.println("cp " +cp.x);
+				//g.println("pp "+pp.x);
+			}
+		}
 	}
 
 	void applyForce(PVector force){
@@ -95,4 +121,5 @@ public class Ship implements iObserver{
 			reset();
 		}
 	}
+	
 }

@@ -76,9 +76,9 @@ public class Scene {
 	
 	protected void level1(){
 		
-		planets.add(new Planet(g, new PVector(80, 80), 50, 50));
-		planets.add(new Planet(g, new PVector(g.width/2, g.height/2), 30, 30));
-		planets.add(new Planet(g, new PVector(g.width/2, g.height/2), 30, 30));
+		planets.add(new Planet(this, g, new PVector(80, 80), 50, 50));
+		planets.add(new Planet(this, g, new PVector(g.width/2, g.height/2), 30, 30));
+		planets.add(new Planet(this, g, new PVector(g.width/2, g.height/2), 30, 30));
 		
 		ship = new Ship(g, new PVector(500,500) );
 		
