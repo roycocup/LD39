@@ -1,5 +1,5 @@
-import 	java.net.URL;
-import 	javax.sound.sampled.*;
+import java.net.URL;
+import javax.sound.sampled.*;
 
 
 public class Audio {

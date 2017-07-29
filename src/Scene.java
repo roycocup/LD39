@@ -25,11 +25,11 @@ public class Scene {
 	
 	public void loadScene(){
 		try{
-			this.getClass().getMethod("level"+sceneNum).invoke(this, new Object[] {});
+			this.getClass().getMethod("level"+sceneNum).invoke(this);
 		} catch(Exception e){
-			g.println(e.toString());
+			e.printStackTrace();
 			g.println("No such level/scene");
-			System.exit(500);
+			System.exit(0);
 		}
 		
 	}
@@ -45,6 +45,7 @@ public class Scene {
 	}
 	
 	public void registerObservers(){
+		observers.clear();
 		for(Planet p : planets){
 			registerObserver(p);
 		}
@@ -100,21 +101,34 @@ public class Scene {
 //		}
 	}
 	
+	public void levelSetup(){
+		try{
+			planets.clear();
+			
+			if(ship == null)
+				ship = new Ship(g, new PVector(500,500) );
+			if(exit == null)
+				exit = new Exit(this, g, new PVector(50, 50));
+			
+			registerObservers();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
 	public void level1(){
-		//planets.add(new Planet(this, g, new PVector(80, 80), 80, 40));
-		ship = new Ship(g, new PVector(500,500) );
-		exit = new Exit(this, g, new PVector(50, 50));
-		registerObservers();
+		levelSetup();
+		
 	}
 	
 	public void level2(){
-		planets.clear();
+		levelSetup();
 		planets.add(new Planet(this, g, new PVector(g.width/2, g.height/2), 30, 80));
 		exit.pos = new PVector(208, 35);
 	}
 	
 	public void level3(){
-		planets.clear();
+		levelSetup();
 		planets.add(new Planet(this, g, new PVector(g.width/2, g.height/2), 30, 80));
 		planets.add(new Planet(this, g, new PVector(100, g.height/2-100), 30, 30));
 		exit.pos = new PVector(208, 35);
@@ -122,7 +136,7 @@ public class Scene {
 	}
 	
 	public void level4(){
-		planets.clear();
+		levelSetup();
 		planets.add(new Planet(this, g, new PVector(g.width/2, g.height/2), 30, 80));
 		exit.pos = new PVector(208, 35);
 		ship.reset(new PVector(600, 500));
