@@ -1,3 +1,4 @@
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -22,18 +23,14 @@ public class Scene {
 		loadScene();
 	}
 	
-	
 	public void loadScene(){
-		if (sceneNum == 1){
-			level1();
-		} else if (sceneNum == 2){
-			level2();
-		} else if (sceneNum == 3){
-			level3();
-		}else {
-			System.out.print("No such scene");
-			System.exit(0);
+		try{
+			this.getClass().getMethod("level"+sceneNum, new Class[] {}).invoke(this, new Object[] {});
+		} catch(Exception e){
+			g.println(e);
+			System.exit(500);
 		}
+		
 	}
 	
 	public void onKeyPressed(int key){
@@ -75,12 +72,12 @@ public class Scene {
 	}
 	
 	public void draw(){
+		ui.draw();
 		for(Planet p : planets){
 			p.draw();
 		}
 		ship.draw();
 		exit.draw();
-		ui.draw();
 	}
 	
 	protected void checkBoundaries(){
@@ -102,20 +99,27 @@ public class Scene {
 //		}
 	}
 	
-	protected void level1(){
+	public void level1(){
 		//planets.add(new Planet(this, g, new PVector(80, 80), 80, 40));
 		ship = new Ship(g, new PVector(500,500) );
 		exit = new Exit(this, g, new PVector(50, 50));
 		registerObservers();
 	}
 	
-	protected void level2(){
+	public void level2(){
 		planets.clear();
 		planets.add(new Planet(this, g, new PVector(g.width/2, g.height/2), 30, 80));
 		exit.pos = new PVector(208, 35);
 	}
 	
-	protected void level3(){
+	public void level3(){
+		planets.clear();
+		planets.add(new Planet(this, g, new PVector(g.width/2, g.height/2), 30, 80));
+		exit.pos = new PVector(208, 35);
+		ship.reset(new PVector(600, 500));
+	}
+	
+	public void level4(){
 		planets.clear();
 		planets.add(new Planet(this, g, new PVector(g.width/2, g.height/2), 30, 80));
 		exit.pos = new PVector(208, 35);

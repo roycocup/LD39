@@ -16,7 +16,7 @@ public class Exit implements iObserver{
 	
 	public void update(){
 		float dist = pos.copy().sub(s.ship.pos).mag();
-		if (dist < 5){
+		if (dist < size){
 			s.goal();
 		}
 	}
