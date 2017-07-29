@@ -15,14 +15,12 @@ public class Slinger extends PApplet {
 		this.scene = new Scene(this, 1); // 0 = main menu, 1 = level 1
 	}
 	
-	
 	public void draw(){
 		background(0);
 		updateAll();
 		drawAll();
 		debug();
 	}
-	
 	
 	public void updateAll(){
 		scene.update();
@@ -31,7 +29,6 @@ public class Slinger extends PApplet {
 	public void drawAll(){
 		scene.draw();
 	}
-	
 	
 	public void keyPressed(){
 //		println(keyCode);

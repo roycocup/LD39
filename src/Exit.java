@@ -2,18 +2,23 @@ import processing.core.PVector;
 
 public class Exit implements iObserver{
 
+	Scene s; 
 	Slinger g; 
 	
-	PVector pos; 
+	PVector pos = new PVector(0,0); 
 	int size = 20; 
 	
-	public Exit(Slinger g, PVector pos){
+	public Exit(Scene s, Slinger g, PVector pos){
+		this.s = s;
 		this.g = g;
 		this.pos = pos; 
 	}
 	
 	public void update(){
-		
+		float dist = pos.copy().sub(s.ship.pos).mag();
+		if (dist < 5){
+			s.goal();
+		}
 	}
 	
 	public void draw(){

@@ -29,11 +29,17 @@ public class Ship implements iObserver{
 	}
 	
 	public void reset(){
-		pos = initialPos.copy();
 		acc = new PVector(0,0); 
-		vel = new PVector(0,0); 
+		vel = new PVector(0,0);
+		pos = initialPos.copy();
 		shot = false;
 	}
+	
+	public void reset(PVector npos){
+		initialPos = npos;
+		reset();
+	}
+	
 	
 	public void update(){
 		vel.add(acc);

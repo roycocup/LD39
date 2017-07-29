@@ -18,7 +18,7 @@ public class Mouse implements iObserver{
 		g.pushMatrix();
 		g.stroke(255);
 		g.noCursor();
-		g.point(pos.x, pos.y);
+		
 		int size = 10; 
 		g.line(pos.x - size, pos.y - size, pos.x + size, pos.y + size);
 		g.line(pos.x + size, pos.y - size, pos.x - size, pos.y + size);
