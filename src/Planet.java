@@ -22,7 +22,10 @@ public class Planet {
 	
 	public void draw(){
 		g.pushMatrix();
-		g.fill(255);
+		int r = (int) processing.core.PApplet.constrain(this.radius * 2, 0, 255);
+		int green = (int) processing.core.PApplet.constrain(this.radius * 5, 0, 255);
+		int b = (int) processing.core.PApplet.constrain(this.radius * 3, 0, 255);
+		g.fill(r,green,b);
 		g.ellipse(pos.x, pos.y, radius, radius);
 		g.popMatrix();
 	}
