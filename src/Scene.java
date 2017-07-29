@@ -11,17 +11,58 @@ public class Scene {
 	Ship ship; 
 	Exit exit; 
 	
+	ArrayList<iObserver> observers = new ArrayList<iObserver>();
+	
 	public Scene(Slinger g, int sceneNum){
 		this.g = g;
 		this.sceneNum = sceneNum;
-	}
-	
-	
-	
-	public void draw(){
+		
 		if (sceneNum == 1){
 			level1();
 		} 
+	}
+	
+	public void onKeyPressed(int key){
+		informObservers(key);
+	}
+	
+	
+	public void informObservers(int keycode){
+		for(iObserver obs : observers){
+			obs.inform(keycode);
+		}
+	}
+	
+	public void registerObservers(){
+		for(Planet p : planets){
+			registerObserver(p);
+		}
+		
+		registerObserver(ship);
+		
+		registerObserver(exit);
+	}
+	
+	public void registerObserver(iObserver o){
+		observers.add(o);
+	}
+	
+	public void deregisterObserver(iObserver o){
+		observers.remove(o);
+	}
+	
+	
+	public void update(){
+		for(Planet p : planets){
+			p.update();
+		}
+		
+		ship.update();
+		
+		exit.update();
+	}
+	
+	public void draw(){
 		
 		for(Planet p : planets){
 			p.draw();
@@ -42,5 +83,6 @@ public class Scene {
 		ship = new Ship(g, new PVector(50,50) );
 		
 		exit = new Exit(g, new PVector(g.width, g.height));
+		registerObservers();
 	} 
 }

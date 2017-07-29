@@ -1,6 +1,6 @@
 import processing.core.PVector;
 
-public class Ship {
+public class Ship implements iObserver{
 
 	Slinger g;
 	
@@ -8,9 +8,9 @@ public class Ship {
 	float energy;
 	float size = 10;
 	
-	PVector acc; 
-	PVector vel; 
-	PVector pos; 
+	PVector acc = new PVector(0,0); 
+	PVector vel = new PVector(0,0); 
+	PVector pos = new PVector(0,0); 
 	
 	public Ship(Slinger g, PVector pos){
 		this.g = g;
@@ -18,7 +18,6 @@ public class Ship {
 	}
 	
 	public void update(){
-		//applyForce(vecToBall());
 		vel.add(acc);
 		pos.add(vel);
 		acc.mult(0);
@@ -44,5 +43,18 @@ public class Ship {
 
 	void applyForce(PVector force){
 		acc.add(force);
+	}
+	
+	PVector vecToMouse(){
+		PVector mp = new PVector(g.mouseX, g.mouseY);
+		PVector force = mp.sub(pos).mult(-1);
+		return force;
+	}
+	
+	public void inform(int keycode){
+		// if space
+		if (keycode == 32){
+			applyForce(vecToMouse().normalize().mult(.05f));
+		}
 	}
 }

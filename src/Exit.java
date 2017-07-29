@@ -1,6 +1,6 @@
 import processing.core.PVector;
 
-public class Exit {
+public class Exit implements iObserver{
 
 	Slinger g; 
 	
@@ -23,4 +23,5 @@ public class Exit {
 		g.popMatrix();
 	}
 	
+	public void inform(int keycode){}
 }

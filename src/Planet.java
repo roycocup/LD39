@@ -1,6 +1,6 @@
 import processing.core.PVector;
 
-public class Planet {
+public class Planet implements iObserver{
 
 	Slinger g; 
 	PVector pos; 
@@ -30,6 +30,6 @@ public class Planet {
 		g.popMatrix();
 	}
 	
-	
+	public void inform(int keycode){}
 	
 }

@@ -15,12 +15,23 @@ public class Slinger extends PApplet {
 	
 	public void draw(){
 		background(0);
+		updateAll();
 		drawAll();
 	}
 	
 	
+	public void updateAll(){
+		scene.update();
+	}
+	
 	public void drawAll(){
 		scene.draw();
+	}
+	
+	
+	public void keyPressed(){
+		//println(keyCode);
+		scene.onKeyPressed(keyCode); 
 	}
 	
 	
