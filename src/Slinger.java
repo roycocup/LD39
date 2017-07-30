@@ -1,3 +1,4 @@
+import java.io.File;
 import java.net.URL;
 
 import processing.core.PApplet;
@@ -12,7 +13,7 @@ public class Slinger extends PApplet {
 	PImage background;
 	PFont f1,f2,f3;
 	Audio audio; 
-	URL inGameMusic;
+	String inGameMusic;
 	
 	public void settings(){
 		size(800, 600);
@@ -25,7 +26,10 @@ public class Slinger extends PApplet {
 		f1 = createFont("data/1900805.ttf", 32);
 		f2 = createFont("data/F25_Bank_Printer.ttf", 24);
 		f3 = createFont("data/F25_Bank_Printer_Bold.ttf", 24);
-		inGameMusic = this.getClass().getClassLoader().getResource("data/SLINGER.wav");
+		inGameMusic = "data/SLINGER.wav";
+		//inGameMusic = this.getClass().getClassLoader().getResource("../data/SLINGER.wav");
+		
+		
 		audio = new Audio(this);
 	}
 	

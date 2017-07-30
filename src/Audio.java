@@ -1,6 +1,7 @@
 import java.io.File;
 import java.net.URL;
 import javax.media.Manager;
+import javax.media.MediaLocator;
 import javax.media.Player;
 import javax.sound.sampled.*;
 
@@ -13,7 +14,9 @@ public class Audio {
 		this.g = g;
 		
 		try {
-			Player player = Manager.createPlayer(g.inGameMusic);
+			URL url = new File(g.inGameMusic).toURI().toURL();
+			MediaLocator ml = new MediaLocator(url);
+			Player player = Manager.createPlayer(ml);
 			player.realize();
 			player.start();
 			
