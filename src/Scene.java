@@ -5,6 +5,7 @@ public class Scene {
 
 	Slinger g; 
 	int sceneNum = 0;
+	int attempts = 0;
 	
 	ArrayList<Planet> planets = new ArrayList<Planet>();
 	Ship ship; 
@@ -80,12 +81,14 @@ public class Scene {
 	}
 	
 	protected void checkBoundaries(){
-		if (ship.pos.x < 0 || ship.pos.y < 0 ){
+		if (ship.pos.x < 0 || ship.pos.y < 0 ||
+				ship.pos.x > g.width || ship.pos.y > g.height){
 			reset();
 		}
 	}
 	
 	public void reset(){
+		attempts++;
 		ship.reset();
 	}
 	
@@ -103,9 +106,9 @@ public class Scene {
 			planets.clear();
 			
 			if(ship == null)
-				ship = new Ship(g, new PVector(500,500) );
+				ship = new Ship(this, g, new PVector(500,500) );
 			if(exit == null)
-				exit = new Exit(this, g, new PVector(50, 50));
+				exit = new Exit(this, g, new PVector(50, 70));
 			
 			registerObservers();
 		}catch(Exception e){
@@ -115,27 +118,26 @@ public class Scene {
 	
 	public void level1(){
 		levelSetup();
-		
 	}
 	
 	public void level2(){
 		levelSetup();
 		planets.add(new Planet(this, g, new PVector(g.width/2, g.height/2), 30, 80));
-		exit.pos = new PVector(208, 35);
+		exit.pos = new PVector(200, 46);
 	}
 	
 	public void level3(){
 		levelSetup();
 		planets.add(new Planet(this, g, new PVector(g.width/2, g.height/2), 30, 80));
-		planets.add(new Planet(this, g, new PVector(100, g.height/2-100), 30, 30));
-		exit.pos = new PVector(208, 35);
+		planets.add(new Planet(this, g, new PVector(255, 124), 30, 30));
+		exit.pos = new PVector(190, 60);
 		ship.reset(new PVector(600, 500));
 	}
 	
 	public void level4(){
 		levelSetup();
-		exit.pos = new PVector(g.width/2, 30);
 		ship.reset(new PVector(g.width/2, g.height-40));
+		exit.pos = new PVector(390, 46);
 		
 		planets.add(new Planet(this, g, new PVector(g.width/2, 300), 20, 40));
 		planets.add(new Planet(this, g, new PVector(367,107), 10, 40));
@@ -146,6 +148,20 @@ public class Scene {
 		planets.add(new Planet(this, g, new PVector(713, 361), 10, 40));
 		planets.add(new Planet(this, g, new PVector(646, 76), 10, 40));
 		
+		
+	}
+	
+	public void level5(){
+		levelSetup();
+		ship.reset(new PVector(g.width/2, g.height-40));
+		exit.pos = new PVector(390, 50);
+		
+		Planet p1 = new Planet(this, g, new PVector(g.width/2, g.height/2), 20, 80);
+		planets.add(p1);
+		
+		Planet p2 = new Planet(this, g, new PVector(357,256), 10, 70);
+		p2.setParent(p1);
+		planets.add(p2);
 		
 	}
 }

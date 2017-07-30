@@ -1,13 +1,13 @@
 import java.io.File;
 import java.net.URL;
 
+import javax.media.Controller;
 import javax.media.ControllerEvent;
 import javax.media.ControllerListener;
 import javax.media.EndOfMediaEvent;
 import javax.media.Manager;
 import javax.media.MediaLocator;
 import javax.media.Player;
-import javax.sound.sampled.*;
 
 
 public class Audio {
@@ -33,18 +33,21 @@ public class Audio {
 				}
 			});
 			
-//			AudioInputStream audioIn = AudioSystem.getAudioInputStream(g.inGameMusic);
-//	        Clip clip = AudioSystem.getClip();
-//	        clip.open(audioIn);
-//	        clip.start();
 	     } catch (Exception e) {
 	        e.printStackTrace();
 	     }
 	}
 	
+	public void mute(){
+		player.stop();
+	}
+	
+	public void play(){
+		player.start();
+	}
 	
 	public void update(){
-		
+		if (player.getState() == Controller.Started){}
 	}
 	
 	public void draw(){}

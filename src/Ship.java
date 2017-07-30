@@ -5,6 +5,7 @@ import processing.core.PVector;
 public class Ship implements iObserver{
 
 	Slinger g;
+	Scene s;
 	
 	float speed; 
 	float energy;
@@ -20,7 +21,8 @@ public class Ship implements iObserver{
 	PVector vel = new PVector(0,0); 
 	PVector pos = new PVector(0,0); 
 	
-	public Ship(Slinger g, PVector pos){
+	public Ship(Scene s, Slinger g, PVector pos){
+		this.s = s;
 		this.g = g;
 		this.pos = pos;
 		this.initialPos = pos.copy();
@@ -40,6 +42,18 @@ public class Ship implements iObserver{
 		reset();
 	}
 	
+	public void recordLastPos(){
+		PVector lastPos = hPos.get(hPos.size()-1);
+		if (lastPos.equals(pos)){
+			hPos.add(pos);
+		}
+	}
+	
+	public void checkStopped(){
+		if (shot == true && vel.mag() < .001f){
+			s.reset();
+		}
+	}
 	
 	public void update(){
 		vel.add(acc);
@@ -49,12 +63,8 @@ public class Ship implements iObserver{
 		vel.mult(dampening);
 		mouse.update();
 		
-		PVector lastPos = hPos.get(hPos.size()-1);
-		if (lastPos.equals(pos)){
-			//g.println(pos);
-			hPos.add(pos);
-		}
-		
+		recordLastPos();
+		checkStopped();
 	}
 	
 	public void draw(){

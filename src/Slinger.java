@@ -1,6 +1,3 @@
-import java.io.File;
-import java.net.URL;
-
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PImage;
@@ -14,23 +11,23 @@ public class Slinger extends PApplet {
 	PFont f1,f2,f3;
 	Audio audio; 
 	String inGameMusic;
+	int defaultScene = 5;
 	
 	public void settings(){
 		size(800, 600);
 	}
 
 	public void setup(){
-		this.scene = new Scene(this, 1); // 0 = main menu, 1 = level 1
+		this.scene = new Scene(this, defaultScene); // 0 = main menu, 1 = level 1
 		
 		background = loadImage("data/background.png");
-		f1 = createFont("data/1900805.ttf", 32);
-		f2 = createFont("data/F25_Bank_Printer.ttf", 24);
-		f3 = createFont("data/F25_Bank_Printer_Bold.ttf", 24);
-		inGameMusic = "data/SLINGER.wav";
-		//inGameMusic = this.getClass().getClassLoader().getResource("../data/SLINGER.wav");
-		
+		f1 = createFont("data/1900805.ttf", 10);
+		f2 = createFont("data/F25_Bank_Printer.ttf", 10);
+		f3 = createFont("data/F25_Bank_Printer_Bold.ttf", 10);
+		inGameMusic = "data/SLINGER.wav";		
 		
 		audio = new Audio(this);
+		audio.mute();
 	}
 	
 	public void draw(){
@@ -43,6 +40,7 @@ public class Slinger extends PApplet {
 	
 	public void updateAll(){
 		scene.update();
+		audio.update();
 	}
 	
 	public void drawAll(){
@@ -50,8 +48,15 @@ public class Slinger extends PApplet {
 	}
 	
 	public void keyPressed(){
-//		println(keyCode);
+//		println(key);
 		scene.onKeyPressed(keyCode); 
+		
+		if (key == 'm'){
+			audio.mute();
+		}
+		if (key == 'p'){
+			audio.play();
+		}
 	}
 	
 	public void mousePressed(){
