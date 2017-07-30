@@ -11,7 +11,7 @@ public class Slinger extends PApplet {
 	PFont f1,f2,f3;
 	Audio audio; 
 	String inGameMusic;
-	int defaultScene = 5;
+	int defaultScene = 0;
 	
 	public void settings(){
 		size(800, 600);

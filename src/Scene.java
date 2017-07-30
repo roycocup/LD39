@@ -34,6 +34,10 @@ public class Scene {
 	
 	public void onKeyPressed(int key){
 		informObservers(key);
+		if (key == 32 && sceneNum == 0){
+			sceneNum++;
+			loadScene();
+		}
 	}
 	
 	public void informObservers(int keycode){
@@ -65,10 +69,16 @@ public class Scene {
 		for(Planet p : planets){
 			p.update();
 		}
-		ship.update();
-		exit.update();
+		if(ship != null){
+			ship.update();
+			checkBoundaries();
+		}
+			
+		if(exit != null)
+			exit.update();
+		
 		ui.update();
-		checkBoundaries();
+		
 	}
 	
 	public void draw(){
@@ -76,8 +86,10 @@ public class Scene {
 		for(Planet p : planets){
 			p.draw();
 		}
-		ship.draw();
-		exit.draw();
+		if(ship != null)
+			ship.draw();
+		if(exit != null)
+			exit.draw();
 	}
 	
 	protected void checkBoundaries(){
@@ -121,10 +133,11 @@ public class Scene {
 	}
 	
 	public void level0(){
-		
+		ui.mainMenu();
 	}
 	
 	public void level1(){
+		ui.startGame();
 		levelSetup();
 	}
 	

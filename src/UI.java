@@ -2,6 +2,8 @@ public class UI {
 	Scene s;
 	Slinger g;
 	float alpha = 0; 
+	boolean gameOverActive = false;
+	boolean	mainMenuActive = false; 
 	
 	public UI(Scene s, Slinger g){
 		this.s = s; 
@@ -9,22 +11,23 @@ public class UI {
 	}
 	
 	public void update(){
-		alpha = 100; 
-		if (s.ship.shot == true){
+		alpha = 100;
+		if (s.ship != null && s.ship.shot == true){
 			alpha = 50; 
 		} 
 	}
 	
 	public void draw(){
 		g.pushMatrix();
-		
-		drawFrame();
-		drawData(); 
-		
-		
-		if(g.DEBUG) 
-			drawDebug();
-			
+		if (mainMenuActive){
+			drawMM();
+		} else if(gameOverActive){
+			drawGO();
+		}else{
+			drawFrame();
+			drawData();
+			if(g.DEBUG) drawDebug();
+		}
 		
 		g.popMatrix();
 	}
@@ -67,7 +70,33 @@ public class UI {
 		g.text(power, 20, fs[1] + 20);
 	}
 	
-	public void gameOver(){}
+	public void drawMM(){
+		g.background(0);
+		g.textSize(32);
+		g.textAlign(g.CENTER);
+		g.text("Your ship is adrift in space.", g.width/2, 50);
+		g.textSize(30);
+		g.text("You only got one shot to get to the next black hole.", g.width/2, 100);
+		g.textSize(24);
+		g.text("Use gravitational assist from nearby planets to slingshot. ", g.width/2, 150);
+		g.textSize(20);
+		g.text("Use the mouse to set your path and click when you are ready.", g.width/2, 200);
+		g.textSize(32);
+		g.text("Tap spacebar to begin.", g.width/2, 250);
+	}
 	
-	public void mainMenu(){}
+	public void drawGO(){}
+	
+	public void gameOver(){
+		gameOverActive = true;
+	}
+	
+	public void mainMenu(){
+		mainMenuActive = true;
+	}
+	
+	public void startGame(){
+		mainMenuActive = false;
+		gameOverActive = false;
+	}
 }

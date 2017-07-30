@@ -60,12 +60,10 @@ public class Planet implements iObserver{
 	
 	protected void translate(float x, float y){
 		g.translate(parent.pos.x, parent.pos.y);
-		//g.println(pos);
 	}
 	
 	public void setParent(Planet p){
 		parent = p;
-		//angle = PVector.dot(pos, parent.pos)/(pos.mag() * parent.pos.mag());
 		angle = 1;
 	}
 	
@@ -86,11 +84,7 @@ public class Planet implements iObserver{
 	}
 	
 	public void orbitParent(){
-		//applyForce(new PVector(.0001f,.0001f));
 		angle = angle + orbitspeed;
-//		g.println(angle);
-//		pos.rotate(angle);
-//		move();
 	}
 	
 	public void move(){

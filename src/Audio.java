@@ -44,6 +44,10 @@ public class Audio {
 		player.start();
 	}
 	
+	public int getState(){
+		return player.getState();
+	}
+	
 	public void update(){
 		if (player.getState() == Controller.Started){}
 	}
