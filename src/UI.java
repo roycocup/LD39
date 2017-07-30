@@ -18,13 +18,39 @@ public class UI {
 	public void draw(){
 		g.pushMatrix();
 		
+		drawFrame();
+		drawData(); 
+		
+		
+		if(g.DEBUG) 
+			drawDebug();
+			
+		
+		g.popMatrix();
+	}
+	
+	public void drawDebug(){
+		int[] fs = getFrameSpace();
+		g.text("Mouse " + g.mouseX +" / "+ g.mouseY, fs[0] + 20, fs[1] + 100);
+	}
+	
+	public int[] getFrameSpace(){
+		int x1 = 1, y1 = 1, x2 = g.width-1, y2 = 30;
+		int[] frameSpace = {x1,y1,x2, y2};
+		return frameSpace;
+	}
+	
+	public void drawFrame(){
 		// frame
+		int[] fs = getFrameSpace();
 		g.stroke(180, alpha);
 		g.fill(175, alpha);
-		int x1 = 1, y1 = 1, x2 = g.width-1, y2 = 30; 
-		g.rect(x1, y1, x2, y2);
-		
+		g.rect(fs[0], fs[1], fs[2], fs[3]);
+	}
+	
+	public void drawData(){
 		// data
+		int[] fs = getFrameSpace();
 		g.textFont(g.f2);
 		g.stroke(255,255,255,alpha);
 		g.fill(255, alpha);
@@ -33,18 +59,15 @@ public class UI {
 		str.append(" Attempts " + s.attempts);
 		str.append(" Time " + g.second());
 		g.textAlign(g.RIGHT);
-		g.text(str.toString(), g.width - 20, y1 + 20);
+		g.text(str.toString(), g.width - 20, fs[1] + 20);
 		
 		// power
 		g.textAlign(g.LEFT);
 		String power = " Power " + (s.ship.vel.mag() * 100);
-		g.text(power, 20, y1 + 20);
-		
-		if(g.DEBUG) 
-			g.text("Mouse " + g.mouseX +" / "+ g.mouseY, x1 + 20, y1 + 100);
-		
-		g.popMatrix();
+		g.text(power, 20, fs[1] + 20);
 	}
 	
+	public void gameOver(){}
 	
+	public void mainMenu(){}
 }

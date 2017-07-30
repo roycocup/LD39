@@ -22,8 +22,6 @@ public class Audio {
 			URL url = new File(g.inGameMusic).toURI().toURL();
 			MediaLocator ml = new MediaLocator(url);
 			player = Manager.createPlayer(ml);
-			player.realize();
-			player.start();
 			player.addControllerListener(new ControllerListener(){
 				public void controllerUpdate(ControllerEvent e){
 					if (e instanceof EndOfMediaEvent){

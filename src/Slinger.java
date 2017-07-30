@@ -27,7 +27,7 @@ public class Slinger extends PApplet {
 		inGameMusic = "data/SLINGER.wav";		
 		
 		audio = new Audio(this);
-		audio.mute();
+		audio.play();
 	}
 	
 	public void draw(){

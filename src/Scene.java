@@ -101,6 +101,10 @@ public class Scene {
 //		}
 	}
 	
+	public void gameOver(){
+		ui.gameOver();
+	}
+	
 	public void levelSetup(){
 		try{
 			planets.clear();
@@ -114,6 +118,10 @@ public class Scene {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+	}
+	
+	public void level0(){
+		
 	}
 	
 	public void level1(){
@@ -152,6 +160,21 @@ public class Scene {
 	}
 	
 	public void level5(){
+		levelSetup();
+		ship.reset(new PVector(g.width/2, g.height-40));
+		exit.pos = new PVector(390, 50);
+		
+		Planet p1 = new Planet(this, g, new PVector(g.width/2, g.height/2), 20, 80);
+		planets.add(p1);
+		
+		Planet p2 = new Planet(this, g, new PVector(0,0), 20, 200);
+		p2.setPos(new PVector(357,256));
+		p2.setParent(p1);
+		planets.add(p2);
+		
+	}
+	
+	public void level6(){
 		levelSetup();
 		ship.reset(new PVector(g.width/2, g.height-40));
 		exit.pos = new PVector(390, 50);

@@ -15,7 +15,7 @@ public class Planet implements iObserver{
 	float mass; 
 	float gravity;
 	float influence;
-	float orbitspeed = .001f;
+	float orbitspeed = .005f;
 	float angle = 0;
 	
 	public Planet(Scene s, Slinger g, PVector pos, float radius, float mass){
@@ -33,7 +33,7 @@ public class Planet implements iObserver{
 		exertGravity();
 		if(parent != null) 
 			orbitParent();
-		g.println(getPos());
+		//g.println(getPos());
 	}
 	
 	public void draw(){
@@ -42,12 +42,12 @@ public class Planet implements iObserver{
 		int green = (int) processing.core.PApplet.constrain(this.mass * 5, 0, 255);
 		int b = (int) processing.core.PApplet.constrain(this.mass * 3, 0, 255);
 		if(parent != null) {
-			g.translate(parent.pos.x, parent.pos.y);
+			translate(parent.pos.x, parent.pos.y);
 			g.rotate(angle);
 			g.fill(r,green,b);
-			g.ellipse(pos.x - parent.pos.x, pos.y - parent.pos.y, radius, radius);
+			g.ellipse(getPos().x, getPos().y, radius, radius);
 			g.fill(r,green,b, 50);
-			g.ellipse(pos.x - parent.pos.x, pos.y - parent.pos.y, influence, influence);
+			g.ellipse(getPos().x, getPos().y, influence, influence);
 			g.popMatrix();
 		} else {
 			g.fill(r,green,b);
@@ -56,6 +56,11 @@ public class Planet implements iObserver{
 			g.ellipse(pos.x, pos.y, influence, influence);
 			g.popMatrix();
 		}
+	}
+	
+	protected void translate(float x, float y){
+		g.translate(parent.pos.x, parent.pos.y);
+		//g.println(pos);
 	}
 	
 	public void setParent(Planet p){
@@ -100,9 +105,7 @@ public class Planet implements iObserver{
 	
 	public void checkCollision(){
 		PVector sp = s.ship.pos;
-		PVector p = getPos();
-		if (parent != null) p = p.add(parent.pos);
-		float dist = p.sub(sp).mag();
+		float dist = getPos().sub(sp).mag();
 		if(dist < radius){
 			s.reset();
 		}
