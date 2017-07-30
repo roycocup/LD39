@@ -11,7 +11,7 @@ public class Slinger extends PApplet {
 	PFont f1,f2,f3;
 	Audio audio; 
 	String inGameMusic;
-	int defaultScene = 0;
+	int defaultScene = 6;
 	
 	public void settings(){
 		size(800, 600);
@@ -27,7 +27,7 @@ public class Slinger extends PApplet {
 		inGameMusic = "data/SLINGER.wav";		
 		
 		audio = new Audio(this);
-		audio.play();
+		//audio.play();
 	}
 	
 	public void draw(){

@@ -158,6 +158,38 @@ public class Scene {
 	public void level4(){
 		levelSetup();
 		ship.reset(new PVector(g.width/2, g.height-40));
+		exit.pos = new PVector(390, 50);
+		
+		planets.add(new Planet(this, g, new PVector(g.width/2, 300), 20, 40));
+		planets.add(new Planet(this, g, new PVector(370,107), 10, 40));
+		planets.add(new Planet(this, g, new PVector(100, g.height/2), 10, 40));
+		planets.add(new Planet(this, g, new PVector(145, (g.height/2)+30), 10, 40));
+		planets.add(new Planet(this, g, new PVector(534, (g.height/2)+40), 10, 40));
+		planets.add(new Planet(this, g, new PVector(192, 144), 10, 40));
+		planets.add(new Planet(this, g, new PVector(713, 361), 10, 40));
+		planets.add(new Planet(this, g, new PVector(646, 76), 10, 40));
+		
+	}
+	
+	public void level5(){
+		levelSetup();
+		ship.reset(new PVector(g.width/2, g.height-40));
+		exit.pos = new PVector(389,135);
+		
+		planets.add(new Planet(this, g, new PVector(717,194), 30, 20));
+		planets.add(new Planet(this, g, new PVector(267,117), 20, 20));
+		planets.add(new Planet(this, g, new PVector(594,280), 20, 20));
+		planets.add(new Planet(this, g, new PVector(381,200), 20, 80));
+		planets.add(new Planet(this, g, new PVector(400,470), 20, 80));
+		planets.add(new Planet(this, g, new PVector(241,317), 20, 80));
+		planets.add(new Planet(this, g, new PVector(217,176), 30, 40));
+		
+		
+	}
+	
+	public void level6(){
+		levelSetup();
+		ship.reset(new PVector(g.width/2, g.height-40));
 		exit.pos = new PVector(390, 46);
 		
 		planets.add(new Planet(this, g, new PVector(g.width/2, 300), 20, 40));
@@ -169,10 +201,58 @@ public class Scene {
 		planets.add(new Planet(this, g, new PVector(713, 361), 10, 40));
 		planets.add(new Planet(this, g, new PVector(646, 76), 10, 40));
 		
+	}
+	
+	
+	public void level7(){
+		levelSetup();
+		ship.reset(new PVector(g.width/2, g.height-40));
+		exit.pos = new PVector(390, 46);
+		
+		planets.add(new Planet(this, g, new PVector(g.width/2, 300), 20, 40));
+		planets.add(new Planet(this, g, new PVector(367,107), 10, 40));
+		planets.add(new Planet(this, g, new PVector(100, g.height/2), 10, 40));
+		planets.add(new Planet(this, g, new PVector(145, (g.height/2)+30), 10, 40));
+		planets.add(new Planet(this, g, new PVector(534, (g.height/2)+40), 10, 40));
+		planets.add(new Planet(this, g, new PVector(192, 144), 10, 40));
+		planets.add(new Planet(this, g, new PVector(713, 361), 10, 40));
+		planets.add(new Planet(this, g, new PVector(646, 76), 10, 40));
 		
 	}
 	
-	public void level5(){
+	public void level8(){
+		levelSetup();
+		ship.reset(new PVector(g.width/2, g.height-40));
+		exit.pos = new PVector(390, 46);
+		
+		planets.add(new Planet(this, g, new PVector(g.width/2, 300), 20, 40));
+		planets.add(new Planet(this, g, new PVector(367,107), 10, 40));
+		planets.add(new Planet(this, g, new PVector(100, g.height/2), 10, 40));
+		planets.add(new Planet(this, g, new PVector(145, (g.height/2)+30), 10, 40));
+		planets.add(new Planet(this, g, new PVector(534, (g.height/2)+40), 10, 40));
+		planets.add(new Planet(this, g, new PVector(192, 144), 10, 40));
+		planets.add(new Planet(this, g, new PVector(713, 361), 10, 40));
+		planets.add(new Planet(this, g, new PVector(646, 76), 10, 40));
+		
+	}
+	
+	public void level9(){
+		levelSetup();
+		ship.reset(new PVector(g.width/2, g.height-40));
+		exit.pos = new PVector(390, 46);
+		
+		planets.add(new Planet(this, g, new PVector(g.width/2, 300), 20, 40));
+		planets.add(new Planet(this, g, new PVector(367,107), 10, 40));
+		planets.add(new Planet(this, g, new PVector(100, g.height/2), 10, 40));
+		planets.add(new Planet(this, g, new PVector(145, (g.height/2)+30), 10, 40));
+		planets.add(new Planet(this, g, new PVector(534, (g.height/2)+40), 10, 40));
+		planets.add(new Planet(this, g, new PVector(192, 144), 10, 40));
+		planets.add(new Planet(this, g, new PVector(713, 361), 10, 40));
+		planets.add(new Planet(this, g, new PVector(646, 76), 10, 40));
+		
+	}
+	
+	public void level10(){
 		levelSetup();
 		ship.reset(new PVector(g.width/2, g.height-40));
 		exit.pos = new PVector(390, 50);
@@ -187,18 +267,4 @@ public class Scene {
 		
 	}
 	
-	public void level6(){
-		levelSetup();
-		ship.reset(new PVector(g.width/2, g.height-40));
-		exit.pos = new PVector(390, 50);
-		
-		Planet p1 = new Planet(this, g, new PVector(g.width/2, g.height/2), 20, 80);
-		planets.add(p1);
-		
-		Planet p2 = new Planet(this, g, new PVector(357,256), 10, 200);
-		p2.setPos(new PVector(357,256));
-		p2.setParent(p1);
-		planets.add(p2);
-		
-	}
 }
