@@ -38,6 +38,11 @@ public class Scene {
 			sceneNum++;
 			loadScene();
 		}
+		
+		// if reset "r"
+		if (key == 82){
+			reset();
+		}
 	}
 	
 	public void informObservers(int keycode){

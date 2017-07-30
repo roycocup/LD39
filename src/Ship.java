@@ -132,10 +132,6 @@ public class Ship implements iObserver{
 			shot = true;
 			applyForce(vecToMouse().mult(4));
 		}
-		// if reset "r"
-		if (keycode == 82 && g.DEBUG){
-			reset();
-		}
 	}
 	
 }
