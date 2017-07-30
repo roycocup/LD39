@@ -1,7 +1,4 @@
-import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Random;
-
 import processing.core.PVector;
 
 public class Scene {
@@ -28,7 +25,7 @@ public class Scene {
 			this.getClass().getMethod("level"+sceneNum).invoke(this);
 		} catch(Exception e){
 			e.printStackTrace();
-			g.println("No such level/scene");
+			System.out.println("No such level/scene");
 			System.exit(0);
 		}
 		
