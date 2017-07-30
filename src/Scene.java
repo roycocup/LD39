@@ -159,7 +159,8 @@ public class Scene {
 		Planet p1 = new Planet(this, g, new PVector(g.width/2, g.height/2), 20, 80);
 		planets.add(p1);
 		
-		Planet p2 = new Planet(this, g, new PVector(357,256), 10, 70);
+		Planet p2 = new Planet(this, g, new PVector(357,256), 10, 200);
+		p2.setPos(new PVector(357,256));
 		p2.setParent(p1);
 		planets.add(p2);
 		

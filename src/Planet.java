@@ -31,7 +31,9 @@ public class Planet implements iObserver{
 	public void update(){
 		checkCollision();
 		exertGravity();
-		if(parent != null) orbitParent();
+		if(parent != null) 
+			orbitParent();
+		g.println(getPos());
 	}
 	
 	public void draw(){
@@ -54,21 +56,51 @@ public class Planet implements iObserver{
 			g.ellipse(pos.x, pos.y, influence, influence);
 			g.popMatrix();
 		}
-		
 	}
 	
 	public void setParent(Planet p){
 		parent = p;
-		angle = .0001f;
+		//angle = PVector.dot(pos, parent.pos)/(pos.mag() * parent.pos.mag());
+		angle = 1;
+	}
+	
+	public PVector getPos(){
+		if (parent != null){
+			return pos.copy().sub(parent.pos);
+		}
+		return pos.copy();
+	}
+	
+	public void setPos(PVector p){
+		if (parent != null){
+			pos = p.sub(parent.pos);
+		}else{
+			pos = p;
+		}
+		
 	}
 	
 	public void orbitParent(){
+		//applyForce(new PVector(.0001f,.0001f));
 		angle = angle + orbitspeed;
+//		g.println(angle);
+//		pos.rotate(angle);
+//		move();
+	}
+	
+	public void move(){
+		vel.add(acc);
+		pos.add(vel);
+		acc.mult(0);
+	}
+	
+	void applyForce(PVector force){
+		acc.add(force);
 	}
 	
 	public void checkCollision(){
 		PVector sp = s.ship.pos;
-		PVector p = pos.copy();
+		PVector p = getPos();
 		if (parent != null) p = p.add(parent.pos);
 		float dist = p.sub(sp).mag();
 		if(dist < radius){
@@ -78,7 +110,7 @@ public class Planet implements iObserver{
 	
 	public void exertGravity(){
 		PVector sp = s.ship.pos;
-		float dist = pos.copy().sub(sp).mag();
+		float dist = getPos().copy().sub(sp).mag();
 		if (dist < influence *.5f ){
 			s.ship.applyForce(
 					pos
