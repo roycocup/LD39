@@ -85,7 +85,21 @@ public class UI {
 		g.text("Tap spacebar to begin.", g.width/2, 250);
 	}
 	
-	public void drawGO(){}
+	public void drawGO(){
+		g.background(0);
+		g.textSize(32);
+		g.textAlign(g.CENTER);
+		g.text("That was it!", g.width/2, 50);
+		g.textSize(30);
+		g.text("You went through some tricky levels!", g.width/2, 100);
+		g.textSize(24);
+		g.text("You played for " + g.second() / 60 + " minutes ", g.width/2, 150);
+		g.textSize(24);
+		g.text("And used " + s.attempts + " attempts to get here.", g.width/2, 200);
+		g.textSize(32);
+		g.text("I bet you can do better next time!", g.width/2, 250);
+		g.noLoop();
+	}
 	
 	public void gameOver(){
 		gameOverActive = true;
