@@ -24,10 +24,11 @@ public class Slinger extends PApplet {
 		f1 = createFont("data/1900805.ttf", 10);
 		f2 = createFont("data/F25_Bank_Printer.ttf", 10);
 		f3 = createFont("data/F25_Bank_Printer_Bold.ttf", 10);
-		inGameMusic = "data/SLINGER.wav";		
+		inGameMusic = "data/SLINGER.wav";
 		
 		audio = new Audio(this);
-		audio.play();
+		if (DEBUG == false)
+			audio.play();
 	}
 	
 	public void draw(){

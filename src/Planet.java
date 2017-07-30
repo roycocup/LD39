@@ -29,8 +29,11 @@ public class Planet implements iObserver{
 	}
 	
 	public void update(){
-		checkCollision();
-		exertGravity();
+		if(g.DEBUG == false){
+			checkCollision();
+			exertGravity();
+		}
+		
 		if(parent != null) 
 			orbitParent();
 		//g.println(getPos());

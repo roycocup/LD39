@@ -25,7 +25,7 @@ public class Exit implements iObserver{
 		g.pushMatrix();
 		g.noStroke();
 		g.fill(255);
-		g.rect(this.pos.x - size, this.pos.y - size, size, size);
+		g.rect(pos.x, pos.y, size, size);
 		g.popMatrix();
 	}
 	
